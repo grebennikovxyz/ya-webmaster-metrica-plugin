@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "site-desk",
+      "name": "ya-webmaster",
       "source": {
         "source": "local",
-        "path": "./plugins/site-desk"
+        "path": "./plugins/ya-webmaster"
       },
       "policy": {
         "installation": "AVAILABLE",

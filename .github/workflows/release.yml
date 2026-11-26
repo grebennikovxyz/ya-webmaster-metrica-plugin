@@ -1,4 +1,4 @@
-name: Test and release Site Desk
+name: Test and release Ya-Webmaster
 on:
   push:
   pull_request:
@@ -31,11 +31,11 @@ jobs:
       - run: python scripts/package.py
       - name: Smoke test the installable ZIP
         shell: bash
-        run: uv run python scripts/smoke_package.py dist/site-desk-*.zip
+        run: uv run python scripts/smoke_package.py dist/ya-webmaster-*.zip
       - if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
         with:
-          name: site-desk-release
+          name: ya-webmaster-release
           path: dist/
   release:
     needs: test
@@ -49,7 +49,7 @@ jobs:
           ref: refs/tags/${{ env.RELEASE_TAG }}
       - uses: actions/download-artifact@v4
         with:
-          name: site-desk-release
+          name: ya-webmaster-release
           path: dist/
       - name: Publish verified archives
         env:
@@ -62,7 +62,7 @@ jobs:
             gh release download "$RELEASE_TAG" --dir published
             (cd published && sha256sum -c SHA256SUMS.txt)
           else
-            gh release create "$RELEASE_TAG" dist/* --verify-tag --title "Site Desk $version" --notes-file RELEASE.md
+            gh release create "$RELEASE_TAG" dist/* --verify-tag --title "Ya-Webmaster $version" --notes-file RELEASE.md
           fi
   public-install:
     needs: release
@@ -75,7 +75,7 @@ jobs:
         with:
           python-version: "3.13"
       - run: python -m pip install uv
-      - run: uv run python scripts/smoke_package.py plugins/site-desk/mcp.json
+      - run: uv run python scripts/smoke_package.py plugins/ya-webmaster/mcp.json
   clawhub:
     needs: public-install
     runs-on: ubuntu-latest

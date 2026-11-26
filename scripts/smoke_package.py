@@ -13,7 +13,7 @@ from mcp.client.stdio import stdio_client
 
 
 async def smoke(config, root, state_dir):
-    cmd = config["mcpServers"]["site-desk"]
+    cmd = config["mcpServers"]["ya-webmaster"]
     args = [a.replace("\u0024{PLUGIN_ROOT}", str(root)) for a in cmd["args"]]
     env = {
         k: os.environ[k]

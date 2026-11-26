@@ -1,8 +1,9 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "site-desk",
-  "version": "0.1.0",
-  "description": "Неофициальный плагин для владельцев сайтов. Готовит карточку организации, работает с Яндекс Вебмастером и Метрикой и строит пешеходные маршруты до входа.",
+  "name": "ya-webmaster",
+  "version": "0.1.1",
+  "keywords": ["Yandex Webmaster", "Яндекс Вебмастер", "Яндекс Метрика", "Яндекс Бизнес", "Яндекс Карты", "SEO", "IndexNow"],
+  "description": "Ya-Webmaster готовит карточку организации по сайту, настраивает Яндекс Вебмастер и Метрику, следит за изменениями и строит пешие маршруты от остановок до входа.",
   "author": {
     "name": "Антон Геннадьевич Гребенников"
   },
@@ -12,17 +13,17 @@
     "com.openai": {
       "requires_local_executor": true,
       "interface": {
-        "displayName": "Site Desk",
+        "displayName": "Ya-Webmaster",
         "shortDescription": "Карточка, цели и маршруты",
-        "longDescription": "Неофициальный плагин для владельцев сайтов. Готовит карточку организации, работает с Яндекс Вебмастером и Метрикой и строит пешеходные маршруты до входа.",
+        "longDescription": "Ya-Webmaster готовит карточку организации по сайту, настраивает Яндекс Вебмастер и Метрику, следит за изменениями и строит пешие маршруты от остановок до входа.",
         "developerName": "Антон Геннадьевич Гребенников",
         "category": "Developer Tools",
         "websiteURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin",
         "supportURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/issues",
         "privacyPolicyURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/blob/main/PRIVACY.ru.md",
         "termsOfServiceURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/blob/main/TERMS.ru.md",
-        "logo": "./assets/site-desk.png",
-        "composerIcon": "./assets/site-desk.png",
+        "logo": "./assets/ya-webmaster.png",
+        "composerIcon": "./assets/ya-webmaster.png",
         "defaultPrompt": [
           "Собери карточку организации по сайту и укажи источники",
           "Подготовь цели Метрики и задание разработчику",

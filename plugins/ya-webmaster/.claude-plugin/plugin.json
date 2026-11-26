@@ -1,0 +1,11 @@
+{
+  "name": "ya-webmaster",
+  "version": "0.1.1",
+  "description": "Ya-Webmaster готовит карточку организации по сайту, настраивает Яндекс Вебмастер и Метрику, следит за изменениями и строит пешие маршруты от остановок до входа.",
+  "author": {
+    "name": "Антон Геннадьевич Гребенников"
+  },
+  "repository": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin",
+  "license": "Apache-2.0",
+  "mcpServers": "./mcp.json"
+}

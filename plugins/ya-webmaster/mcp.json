@@ -1,15 +1,15 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
-    "site-desk": {
+    "ya-webmaster": {
       "type": "stdio",
       "command": "uvx",
       "args": [
         "--python",
         "3.13",
         "--from",
-        "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.0/grebennikov_site_desk-0.1.0-py3-none-any.whl",
-        "site-desk",
+        "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.1/grebennikov_ya_webmaster-0.1.1-py3-none-any.whl",
+        "ya-webmaster",
         "serve"
       ]
     }

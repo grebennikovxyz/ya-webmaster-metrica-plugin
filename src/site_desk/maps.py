@@ -141,7 +141,7 @@ def directions(entrance, stops, use_routing, export_geometry):
     doc = ET.Element(
         "gpx",
         version="1.1",
-        creator="Site Desk",
+        creator="Ya-Webmaster",
         xmlns="http://www.topografix.com/GPX/1/1",
     )
     meta = ET.SubElement(doc, "metadata")

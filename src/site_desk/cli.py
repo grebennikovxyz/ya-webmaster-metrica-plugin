@@ -11,7 +11,7 @@ from .access import SERVICES
 
 
 def main():
-    parser = argparse.ArgumentParser(prog="site-desk")
+    parser = argparse.ArgumentParser(prog="ya-webmaster")
     actions = parser.add_subparsers(dest="action", required=True)
     actions.add_parser("serve", help="Start the MCP stdio server")
     for name in ("connect", "disconnect"):

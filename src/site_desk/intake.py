@@ -68,7 +68,7 @@ def public_page(url, allowed=None):
             connection.request(
                 "GET",
                 path + ("?" + query if query else ""),
-                headers={"User-Agent": "SiteDesk/0.1", "Accept": "text/html"},
+                headers={"User-Agent": "Ya-Webmaster/0.1", "Accept": "text/html"},
             )
             res = connection.getresponse()
             if res.status in (301, 302, 303, 307, 308) and res.getheader("Location"):

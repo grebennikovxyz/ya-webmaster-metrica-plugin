@@ -16,8 +16,8 @@ from package import PLUGIN, ROOT, VERSION
 
 OWNER = "grebennikovxyz"
 REPO = f"{OWNER}/ya-webmaster-metrica-plugin"
-PACKAGE = f"@{OWNER}/site-desk"
-SKILL = PLUGIN / "skills/site-desk"
+PACKAGE = f"@{OWNER}/ya-webmaster"
+SKILL = PLUGIN / "skills/ya-webmaster"
 REGISTRY = "https://clawhub.ai"
 
 
@@ -25,7 +25,7 @@ def read_json(url):
     request = Request(
         url,
         headers={
-            "User-Agent": f"Site Desk/{VERSION} (+https://github.com/{REPO})",
+            "User-Agent": f"Ya-Webmaster/{VERSION} (+https://github.com/{REPO})",
             "Accept": "application/json",
         },
     )
@@ -35,7 +35,7 @@ def read_json(url):
 
 def published(channel, archive):
     if channel == "skill":
-        path = f"/skills/site-desk/versions/{VERSION}?ownerHandle={OWNER}"
+        path = f"/skills/ya-webmaster/versions/{VERSION}?ownerHandle={OWNER}"
     else:
         path = f"/packages/{quote(PACKAGE, safe='')}/versions/{VERSION}/artifact"
     try:
@@ -73,7 +73,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("channel", choices=("skill", "package"))
     parser.add_argument(
-        "--archive", type=Path, default=ROOT / "dist" / f"site-desk-{VERSION}-clawhub.tgz"
+        "--archive", type=Path, default=ROOT / "dist" / f"ya-webmaster-{VERSION}-clawhub.tgz"
     )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
@@ -103,13 +103,13 @@ def main():
             "publish",
             str(SKILL),
             "--slug",
-            "site-desk",
+            "ya-webmaster",
             "--name",
-            "Site Desk",
+            "Ya-Webmaster",
             "--categories",
             "productivity",
             "--topics",
-            "webmaster,analytics,mcp",
+            "yandex,webmaster,metrica,maps",
             "--source-path",
             SKILL.relative_to(ROOT).as_posix(),
         ]
@@ -123,7 +123,7 @@ def main():
             "--name",
             PACKAGE,
             "--display-name",
-            "Site Desk",
+            "Ya-Webmaster",
             "--source-path",
             PLUGIN.relative_to(ROOT).as_posix(),
         ]

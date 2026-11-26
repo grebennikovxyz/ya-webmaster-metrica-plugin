@@ -27,13 +27,13 @@ def credential(service, required=True):
         except NoKeyringError:
             pass
     if required and not value:
-        raise ValueError(f"Connect {service} locally: site-desk connect {service}")
+        raise ValueError(f"Connect {service} locally: ya-webmaster connect {service}")
     return value
 
 
 def request(method, url, *, token=None, params=None, body=None, allow_text=False):
     headers = {
-        "User-Agent": "SiteDesk/0.1 (+https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin)"
+        "User-Agent": "Ya-Webmaster/0.1 (+https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin)"
     }
     if token:
         headers["Authorization"] = "OAuth " + token

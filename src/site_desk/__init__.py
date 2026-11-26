@@ -1,1 +1,1 @@
-"""Site Desk for local MCP clients."""
+"""Ya-Webmaster for local MCP clients."""
