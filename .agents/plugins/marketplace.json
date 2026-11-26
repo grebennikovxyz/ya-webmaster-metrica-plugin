@@ -1,0 +1,20 @@
+{
+  "name": "grebennikov-web",
+  "interface": {
+    "displayName": "Grebennikov Web"
+  },
+  "plugins": [
+    {
+      "name": "site-desk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/site-desk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+name: Test and release Site Desk
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install uv
+      - run: uv run --with pytest pytest -q
+      - run: uv build --wheel
+      - run: python scripts/package.py
+      - run: uv run python scripts/smoke_package.py dist/site-desk-0.1.0.zip
+      - if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-desk-release
+          path: dist/
+  release:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-desk-release
+          path: dist/
+      - name: Publish verified archives
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')
+          test "v$version" = "$GITHUB_REF_NAME"
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          gh release create "$GITHUB_REF_NAME" dist/* --verify-tag --title "Site Desk $version" --notes-file RELEASE.md
+  public-install:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install uv
+      - run: uv run python scripts/smoke_package.py plugins/site-desk/mcp.json
+  clawhub:
+    needs: public-install
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [skill, package]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --global --ignore-scripts --no-audit --no-fund clawhub@0.27.0
+      - name: Download the released bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download "$GITHUB_REF_NAME" --dir dist --pattern '*-clawhub.tgz'
+      - name: Publish and verify
+        env:
+          CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+          CLAWHUB_CONFIG_PATH: ${{ runner.temp }}/clawhub.json
+          CHANNEL: ${{ matrix.channel }}
+        run: |
+          : "${CLAWHUB_TOKEN:?Set the ClawHub publisher secret and rerun this job}"
+          umask 077
+          trap 'rm -f "$CLAWHUB_CONFIG_PATH"' EXIT
+          python -c 'import json,os,pathlib; pathlib.Path(os.environ["CLAWHUB_CONFIG_PATH"]).write_text(json.dumps({"registry":"https://clawhub.ai","token":os.environ["CLAWHUB_TOKEN"]}))'
+          python scripts/clawhub_release.py "$CHANNEL"

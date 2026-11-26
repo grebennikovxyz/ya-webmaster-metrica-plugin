@@ -1,0 +1,41 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "site-desk",
+  "version": "0.1.0",
+  "description": "Неофициальный плагин для владельцев сайтов. Готовит карточку организации, работает с Яндекс Вебмастером и Метрикой и строит пешеходные маршруты до входа.",
+  "author": {
+    "name": "Антон Геннадьевич Гребенников"
+  },
+  "repository": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin",
+  "license": "Apache-2.0",
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Site Desk",
+        "shortDescription": "Карточка, цели и маршруты",
+        "longDescription": "Неофициальный плагин для владельцев сайтов. Готовит карточку организации, работает с Яндекс Вебмастером и Метрикой и строит пешеходные маршруты до входа.",
+        "developerName": "Антон Геннадьевич Гребенников",
+        "category": "Developer Tools",
+        "websiteURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin",
+        "supportURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/issues",
+        "privacyPolicyURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/blob/main/PRIVACY.ru.md",
+        "termsOfServiceURL": "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/blob/main/TERMS.ru.md",
+        "logo": "./assets/site-desk.png",
+        "composerIcon": "./assets/site-desk.png",
+        "defaultPrompt": [
+          "Собери карточку организации по сайту и укажи источники",
+          "Подготовь цели Метрики и задание разработчику",
+          "Построй пешеходные маршруты от остановок до входа"
+        ]
+      },
+      "review": {
+        "prompts": [
+          "Собери карточку организации по сайту и укажи источники",
+          "Подготовь цели Метрики и задание разработчику",
+          "Построй пешеходные маршруты от остановок до входа"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["uv_build>=0.10,<0.14"]
+build-backend = "uv_build"
+
+[project]
+name = "grebennikov-site-desk"
+version = "0.1.0"
+description = "Site profiles, search diagnostics, analytics and walking directions for Yandex services"
+requires-python = ">=3.13"
+dependencies = ["mcp>=1.26,<2", "httpx>=0.27,<1", "certifi", "beautifulsoup4>=4.13,<5", "keyring>=25,<26", "tzdata; sys_platform == 'win32'"]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+
+[project.scripts]
+site-desk = "site_desk.cli:main"
+
+[tool.uv.build-backend]
+module-name = "site_desk"
