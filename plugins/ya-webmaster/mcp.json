@@ -8,7 +8,7 @@
         "--python",
         "3.13",
         "--from",
-        "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.1/grebennikov_ya_webmaster-0.1.1-py3-none-any.whl",
+        "https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.2/grebennikov_ya_webmaster-0.1.2-py3-none-any.whl",
         "ya-webmaster",
         "serve"
       ]

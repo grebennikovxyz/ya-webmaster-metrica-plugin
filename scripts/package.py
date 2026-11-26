@@ -50,6 +50,7 @@ def package():
             {
                 "name": "@grebennikovxyz/ya-webmaster",
                 "version": VERSION,
+                "description": json.loads((PLUGIN / "plugin.json").read_text("utf-8"))["description"],
                 "license": "Apache-2.0",
             }
         ).encode()

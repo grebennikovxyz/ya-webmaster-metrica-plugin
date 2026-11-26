@@ -1,12 +1,12 @@
 # Ya-Webmaster
 
+Ya-Webmaster помогает владельцу сайта подготовить карточку в Яндекс Бизнесе, подтвердить сайт в Вебмастере, настроить Метрику и объяснить клиенту, как дойти до двери. Плагин работает на устройстве пользователя и обращается к выбранным сервисам напрямую. Издатель не получает токены, данные сайта и отчёты.
+
 [![Boosty](https://img.shields.io/badge/Boosty-F15F2C?style=flat&logo=boosty&logoColor=white)](https://boosty.to/grebennikov.xyz/donate)
 [![Релиз](https://img.shields.io/github/v/release/grebennikovxyz/ya-webmaster-metrica-plugin)](https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/latest)
 [![Проверки](https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/actions/workflows/release.yml/badge.svg)](https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/actions)
 
 <img src="plugins/ya-webmaster/assets/ya-webmaster.png" width="88" align="right" alt="Карта с маршрутом до входа">
-
-Ya-Webmaster помогает владельцу сайта подготовить карточку в Яндекс Бизнесе, подтвердить сайт в Вебмастере, настроить Метрику и объяснить клиенту, как дойти до двери. Плагин работает на устройстве пользователя и обращается к выбранным сервисам напрямую. Издатель не получает токены, данные сайта и отчёты.
 
 > «Собери карточку нашей типографии по сайту. Покажи, где нашёл часы работы и адрес. Подготовь цели для звонка и успешно отправленной заявки. Дай разработчику код счётчика и примеры событий».
 
@@ -19,12 +19,12 @@ Ya-Webmaster помогает владельцу сайта подготовит
 | Codex | `codex plugin marketplace add grebennikovxyz/ya-webmaster-metrica-plugin`, затем `codex plugin add ya-webmaster@grebennikov-web` |
 | Claude Code | `claude plugin marketplace add grebennikovxyz/ya-webmaster-metrica-plugin`, затем `claude plugin install ya-webmaster@grebennikov-web` |
 | OpenClaw | `openclaw plugins install ya-webmaster --marketplace grebennikovxyz/ya-webmaster-metrica-plugin --accept-capabilities` |
-| Plugin Creator / локальный исполнитель | Скачайте ZIP с одним плагином со [страницы релизов](https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/latest). В нём уже лежит wheel сервера. Исполнителю нужны uvx в PATH и подстановка `${PLUGIN_ROOT}`. |
+| Plugin Creator / локальный исполнитель | Скачайте ZIP с одним плагином со [страницы релизов](https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/latest). В ZIP включены инструменты для работы на вашем устройстве. Исполнителю нужны uvx в PATH и подстановка `${PLUGIN_ROOT}`. |
 
 Откройте новый чат и попросите «Покажи подключения Ya-Webmaster». Карточка, UTM, ссылки с пешеходным маршрутом и мониторинг публичных полей работают без OAuth. Для терминала установите команду из того же релиза.
 
 ```sh
-uv tool install --python 3.13 https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.1/grebennikov_ya_webmaster-0.1.1-py3-none-any.whl
+uv tool install --python 3.13 https://github.com/grebennikovxyz/ya-webmaster-metrica-plugin/releases/download/v0.1.2/grebennikov_ya_webmaster-0.1.2-py3-none-any.whl
 ya-webmaster connect webmaster
 ya-webmaster connect metrica
 ```

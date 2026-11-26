@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ya-webmaster",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": ["Yandex Webmaster", "Яндекс Вебмастер", "Яндекс Метрика", "Яндекс Бизнес", "Яндекс Карты", "SEO", "IndexNow"],
   "description": "Ya-Webmaster готовит карточку организации по сайту, настраивает Яндекс Вебмастер и Метрику, следит за изменениями и строит пешие маршруты от остановок до входа.",
   "author": {
